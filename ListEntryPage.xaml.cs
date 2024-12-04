@@ -1,5 +1,7 @@
-namespace FloreaCristinaLab7;
+
 using FloreaCristinaLab7.Models;
+
+namespace FloreaCristinaLab7;
 
 public partial class ListEntryPage : ContentPage
 {

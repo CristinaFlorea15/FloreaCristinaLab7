@@ -1,6 +1,9 @@
 ﻿using System;
-using FloreaCristinaLab7.Florea_Cristina_Lab10.Data;
+using FloreaCristinaLab7.Models;
+using FloreaCristinaLab7.Data;
 using System.IO;
+
+
 namespace FloreaCristinaLab7
 {
     public partial class App : Application
@@ -19,7 +22,6 @@ namespace FloreaCristinaLab7
                 return database;
             }
         }
-
         public App()
         {
             InitializeComponent();
