@@ -1,4 +1,4 @@
-using FloreaCristinaLab7.Models;
+﻿using FloreaCristinaLab7.Models;
 using Microsoft.Maui.Devices.Sensors;
 using Plugin.LocalNotification;
 namespace FloreaCristinaLab7;
@@ -9,12 +9,33 @@ public partial class ShopPage : ContentPage
     {
         InitializeComponent();
     }
+
+
+    //tema
+
+    async void OnDeleteButtonClicked(object sender, EventArgs e)
+    {
+        var shop = (Shop)BindingContext;
+
+        // Confirmare de ștergere
+        var answer = await DisplayAlert("Confirm Delete", $"Are you sure you want to delete {shop.ShopName}?", "Yes", "No");
+
+        if (answer)
+        {
+            // Șterge magazinul din baza de date
+            await App.Database.DeleteShopAsync(shop);
+            await Navigation.PopAsync();
+        }
+    }
+
+
     async void OnSaveButtonClicked(object sender, EventArgs e)
     {
         var shop = (Shop)BindingContext;
         await App.Database.SaveShopAsync(shop);
         await Navigation.PopAsync();
     }
+
     async void OnShowMapButtonClicked(object sender, EventArgs e)
     {
         var shop = (Shop)BindingContext;
@@ -46,7 +67,8 @@ public partial class ShopPage : ContentPage
             LocalNotificationCenter.Current.Show(request);
         }
 
-        await Map.OpenAsync(shoplocation, options);
 
+
+        await Map.OpenAsync(shoplocation, options);
     }
 }
